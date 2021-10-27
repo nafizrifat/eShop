@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using eShop.Common;
 
 namespace eShop.BLL
 {
@@ -48,6 +49,14 @@ namespace eShop.BLL
 
         public string SayHello()
         {
+            var vendor = new Vendor();
+            vendor.SendWelcomeEmail("Message from Product");
+
+            var emailService = new EmailService();
+            var confirmation = emailService.SendMessage("New product", this.productName, "sales@abc.com");
+
+            var result = LoggingService.LogAction("Saying Hello");
+
             return "Hello " + ProductName + " (" + ProductId + ") " + Description;
         }
     }
