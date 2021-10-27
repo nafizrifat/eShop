@@ -22,5 +22,10 @@ namespace eShop.Wpf.ViewModels
         {
             currentVendor = vendorRepository.Retrieve(1);
         }
+
+        //public void SaveButton_Click()
+        //{
+
+        //}
     }
 }
