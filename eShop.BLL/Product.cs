@@ -11,6 +11,20 @@ namespace eShop.BLL
     /// </summary>
     public class Product
     {
+        public Product()
+        {
+            Console.WriteLine("Product Created");
+        }
+
+        public Product(int productId, string productName, string description):this()
+        {
+            ProductName = productName;
+            ProductId = productId;
+            Description = description;
+
+            Console.WriteLine("Product instance created, named: "+ ProductName);
+        }
+
         private string productName;
         public string ProductName
         {

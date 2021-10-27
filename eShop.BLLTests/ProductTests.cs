@@ -28,5 +28,20 @@ namespace eShop.BLL.Tests
             //Assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod()]
+        public void SayHelloTest_ParameterizedCOnstructor()
+        {
+            //Arrange
+            var currentProduct = new Product(1, "Milk - Whole 1G", "1 gallon Whole Milk with Vitamin D");
+
+            var expected = "Hello Milk - Whole 1G (1) 1 gallon Whole Milk with Vitamin D";
+
+            //Act
+            var actual = currentProduct.SayHello();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
