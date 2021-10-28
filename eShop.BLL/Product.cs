@@ -15,15 +15,16 @@ namespace eShop.BLL
         public Product()
         {
             Console.WriteLine("Product Created");
+            //this.productVendor = new Vendor();
         }
 
-        public Product(int productId, string productName, string description):this()
+        public Product(int productId, string productName, string description) : this()
         {
             ProductName = productName;
             ProductId = productId;
             Description = description;
 
-            Console.WriteLine("Product instance created, named: "+ ProductName);
+            Console.WriteLine("Product instance created, named: " + ProductName);
         }
 
         private string productName;
@@ -47,10 +48,24 @@ namespace eShop.BLL
             set { productId = value; }
         }
 
+        private Vendor productVendor;
+        public Vendor ProductVendor
+        {
+            get
+            {
+                if (productVendor == null)
+                {
+                    productVendor = new Vendor();
+                }
+                return productVendor;
+            }
+            set { productVendor = value; }
+        }
+
         public string SayHello()
         {
-            var vendor = new Vendor();
-            vendor.SendWelcomeEmail("Message from Product");
+            //var vendor = new Vendor();
+            //vendor.SendWelcomeEmail("Message from Product");
 
             var emailService = new EmailService();
             var confirmation = emailService.SendMessage("New product", this.productName, "sales@abc.com");
