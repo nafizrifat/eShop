@@ -12,10 +12,16 @@ namespace eShop.BLL
     /// </summary>
     public class Product
     {
+        
+        public const double InchesPerMeter = 39.37;
+        public readonly decimal MinimumPrice;
+
+
         public Product()
         {
             Console.WriteLine("Product Created");
             //this.productVendor = new Vendor();
+            this.MinimumPrice = .96m;
         }
 
         public Product(int productId, string productName, string description) : this()
@@ -23,6 +29,10 @@ namespace eShop.BLL
             ProductName = productName;
             ProductId = productId;
             Description = description;
+            if (productName.StartsWith("Bulk"))
+            {
+                this.MinimumPrice = 9.99m;
+            }
 
             Console.WriteLine("Product instance created, named: " + ProductName);
         }

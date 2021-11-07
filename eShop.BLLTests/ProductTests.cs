@@ -53,9 +53,9 @@ namespace eShop.BLL.Tests
             //Arrange
             //object initializer
             var currentProduct = new Product()
-                {ProductId = 1, ProductName = "Milk - Whole 1G", Description = "1 gallon Whole Milk with Vitamin D"};
+            { ProductId = 1, ProductName = "Milk - Whole 1G", Description = "1 gallon Whole Milk with Vitamin D" };
 
-            var expected = "Hello Milk - Whole 1G (1) 1 gallon Whole Milk with Vitamin D"+ " Available on: ";
+            var expected = "Hello Milk - Whole 1G (1) 1 gallon Whole Milk with Vitamin D" + " Available on: ";
 
             //Act
             var actual = currentProduct.SayHello();
@@ -79,5 +79,44 @@ namespace eShop.BLL.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod()]
+        public void ConvertMetersToInchesTest()
+        {
+            //Arrange
+            var expected = 78.74;
+
+            //Act
+            var actual = 2 * Product.InchesPerMeter;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void MinimumPriceTest_Default()
+        {
+            //Arrange
+            var currentProduct = new Product();
+            var expected = .96m;
+
+            //Act
+            var actual = currentProduct.MinimumPrice;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod()]
+        public void MinimumPriceTest_Bulk()
+        {
+            //Arrange
+            var currentProduct = new Product(1, "Bulk Product", "");
+            var expected = 9.99m;
+
+            //Act
+            var actual = currentProduct.MinimumPrice;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
