@@ -27,6 +27,13 @@ namespace eShop.BLL
             Console.WriteLine("Product instance created, named: " + ProductName);
         }
 
+        private DateTime? availabilityDate;
+        public DateTime? AvailabilityDate
+        {
+            get { return availabilityDate; }
+            set { availabilityDate = value; }
+        }
+
         private string productName;
         public string ProductName
         {
@@ -72,7 +79,7 @@ namespace eShop.BLL
 
             var result = LoggingService.LogAction("Saying Hello");
 
-            return "Hello " + ProductName + " (" + ProductId + ") " + Description;
+            return "Hello " + ProductName + " (" + ProductId + ") " + Description + " Available on: " + availabilityDate?.ToShortDateString();
         }
     }
 }

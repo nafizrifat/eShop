@@ -22,7 +22,7 @@ namespace eShop.BLL.Tests
             currentProduct.Description = "1 gallon Whole Milk with Vitamin D";
             currentProduct.ProductVendor.CompanyName = "ABC";
 
-            var expected = "Hello Milk - Whole 1G (1) 1 gallon Whole Milk with Vitamin D";
+            var expected = "Hello Milk - Whole 1G (1) 1 gallon Whole Milk with Vitamin D" + " Available on: ";
 
             //Act
             var actual = currentProduct.SayHello();
@@ -32,13 +32,13 @@ namespace eShop.BLL.Tests
         }
 
         [TestMethod()]
-        public void SayHelloTest_ParameterizedCOnstructor()
+        public void SayHelloTest_ParameterizedConstructor()
         {
             //Arrange
             //parameterized constructor 
             var currentProduct = new Product(1, "Milk - Whole 1G", "1 gallon Whole Milk with Vitamin D");
 
-            var expected = "Hello Milk - Whole 1G (1) 1 gallon Whole Milk with Vitamin D";
+            var expected = "Hello Milk - Whole 1G (1) 1 gallon Whole Milk with Vitamin D" + " Available on: ";
 
             //Act
             var actual = currentProduct.SayHello();
@@ -48,14 +48,14 @@ namespace eShop.BLL.Tests
         }
 
         [TestMethod()]
-        public void SayHelloTest_ObjectInitilizer()
+        public void SayHelloTest_ObjectInitializer()
         {
             //Arrange
             //object initializer
             var currentProduct = new Product()
                 {ProductId = 1, ProductName = "Milk - Whole 1G", Description = "1 gallon Whole Milk with Vitamin D"};
 
-            var expected = "Hello Milk - Whole 1G (1) 1 gallon Whole Milk with Vitamin D";
+            var expected = "Hello Milk - Whole 1G (1) 1 gallon Whole Milk with Vitamin D"+ " Available on: ";
 
             //Act
             var actual = currentProduct.SayHello();
