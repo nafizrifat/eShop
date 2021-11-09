@@ -177,7 +177,7 @@ namespace eShop.BLL.Tests
             Assert.AreEqual(expectedMessage, actualMessage);
         }
         [TestMethod()]
-        public void Catagory_DefaultValue()
+        public void Category_DefaultValue()
         {
             //Arrange
             var currentProduct = new Product();
@@ -190,7 +190,7 @@ namespace eShop.BLL.Tests
             Assert.AreEqual(expected, actual);
         }
         [TestMethod()]
-        public void Catagory_NewValue()
+        public void Category_NewValue()
         {
             //Arrange
             var currentProduct = new Product();
@@ -225,6 +225,19 @@ namespace eShop.BLL.Tests
 
             //Act
             var actual = currentProduct.SequenceNumber;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod()]
+        public void ProductCode_DefaultValue()
+        {
+            //Arrange
+            var currentProduct = new Product();
+            var expected = "Tools-1";
+
+            //Act
+            var actual = currentProduct.ProductCode;
 
             //Assert
             Assert.AreEqual(expected, actual);

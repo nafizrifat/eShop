@@ -102,9 +102,10 @@ namespace eShop.BLL
             set { productVendor = value; }
         }
 
-        public string Catagory { get; set; }
+        internal string Catagory { get;  set; }
         public int SequenceNumber { get; set; } = 1;
-        public string ValidationMessage { get; set; }
+        public string ProductCode => this.Catagory +"-"+ SequenceNumber;
+        public string ValidationMessage { get; private set; }
 
         public string SayHello()
         {
