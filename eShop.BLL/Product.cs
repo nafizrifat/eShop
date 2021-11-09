@@ -23,6 +23,7 @@ namespace eShop.BLL
             Console.WriteLine("Product Created");
             //this.productVendor = new Vendor();
             this.MinimumPrice = .96m;
+            this.Catagory = "Tools";
         }
 
         public Product(int productId, string productName, string description) : this()
@@ -71,7 +72,7 @@ namespace eShop.BLL
             }
         }
 
-        public string ValidationMessage { get; set; }
+       
 
         private string description;
         public string Description
@@ -100,6 +101,10 @@ namespace eShop.BLL
             }
             set { productVendor = value; }
         }
+
+        public string Catagory { get; set; }
+        public int SequenceNumber { get; set; } = 1;
+        public string ValidationMessage { get; set; }
 
         public string SayHello()
         {

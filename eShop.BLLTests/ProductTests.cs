@@ -165,7 +165,7 @@ namespace eShop.BLL.Tests
         public void Validation_JustRight()
         {
             //Arrange
-            var currentProduct = new Product(1, "Milk with 2%","");
+            var currentProduct = new Product(1, "Milk with 2%", "");
             var expected = "Milk with 2%";
             string expectedMessage = null;
             //Act
@@ -176,5 +176,59 @@ namespace eShop.BLL.Tests
             Assert.AreEqual(expected, actual);
             Assert.AreEqual(expectedMessage, actualMessage);
         }
+        [TestMethod()]
+        public void Catagory_DefaultValue()
+        {
+            //Arrange
+            var currentProduct = new Product();
+            var expected = "Tools";
+
+            //Act
+            var actual = currentProduct.Catagory;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod()]
+        public void Catagory_NewValue()
+        {
+            //Arrange
+            var currentProduct = new Product();
+            currentProduct.Catagory = "Electronic";
+            var expected = "Electronic";
+
+            //Act
+            var actual = currentProduct.Catagory;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod()]
+        public void Sequence_DefaultValue()
+        {
+            //Arrange
+            var currentProduct = new Product();
+            var expected = 1;
+
+            //Act
+            var actual = currentProduct.SequenceNumber;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod()]
+        public void Sequence_NewValue()
+        {//Arrange
+            var currentProduct = new Product();
+            currentProduct.SequenceNumber = 5;
+            var expected = 5;
+
+            //Act
+            var actual = currentProduct.SequenceNumber;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
+
 }
