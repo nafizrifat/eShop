@@ -118,5 +118,63 @@ namespace eShop.BLL.Tests
             //Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod()]
+        public void ProductName_Format()
+        {
+            //Arrange
+            var currentProduct = new Product(1, " Steel Hammer ", "");
+            var expected = "Steel Hammer";
+
+            //Act
+            var actual = currentProduct.ProductName;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod()]
+        public void Validation_TooShort()
+        {
+            //Arrange
+            var currentProduct = new Product(1, "aw", "");
+            string expected = null;
+            var expectedMessage = "Product Name must be at least 3 characters";
+            //Act
+            var actual = currentProduct.ProductName;
+            var actualMessage = currentProduct.ValidationMessage;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expectedMessage, actualMessage);
+        }
+        [TestMethod()]
+        public void Validation_TooLong()
+        {
+            //Arrange
+            var currentProduct = new Product(1, "Milk with 2percent of fat almost fat free", "");
+            string expected = null;
+            var expectedMessage = "Product Name cannot be more than 20 characters";
+            //Act
+            var actual = currentProduct.ProductName;
+            var actualMessage = currentProduct.ValidationMessage;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expectedMessage, actualMessage);
+        }
+        [TestMethod()]
+        public void Validation_JustRight()
+        {
+            //Arrange
+            var currentProduct = new Product(1, "Milk with 2%","");
+            var expected = "Milk with 2%";
+            string expectedMessage = null;
+            //Act
+            var actual = currentProduct.ProductName;
+            var actualMessage = currentProduct.ValidationMessage;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expectedMessage, actualMessage);
+        }
     }
 }

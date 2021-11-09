@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,9 +48,30 @@ namespace eShop.BLL
         private string productName;
         public string ProductName
         {
-            get { return productName; }
-            set { productName = value; }
+            get
+            {
+                var formattedName = productName?.Trim();
+                return formattedName;
+            }
+            set
+            {
+                if (value.Length < 3)
+                {
+                    ValidationMessage = "Product Name must be at least 3 characters";
+                }
+
+                else if (value.Length >20)
+                {
+                    ValidationMessage = "Product Name cannot be more than 20 characters";
+                }
+                else
+                {
+                    productName = value;
+                }
+            }
         }
+
+        public string ValidationMessage { get; set; }
 
         private string description;
         public string Description
