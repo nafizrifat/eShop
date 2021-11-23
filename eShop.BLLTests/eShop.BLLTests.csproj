@@ -52,11 +52,16 @@
   <ItemGroup>
     <Compile Include="ProductTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VendorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eShop.BLL\eShop.BLL.csproj">
       <Project>{C99CE825-E903-4572-98E0-51802F754B72}</Project>
       <Name>eShop.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eShop.Common\eShop.Common.csproj">
+      <Project>{C1F0BB44-6BD1-4816-97EE-EA507CE6508C}</Project>
+      <Name>eShop.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

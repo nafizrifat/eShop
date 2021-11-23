@@ -242,6 +242,22 @@ namespace eShop.BLL.Tests
             //Assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod()]
+        public void CalculateSuggestedPriceTest()
+        {
+            //Arrange
+            var currentProduct = new Product(1,"milk","");
+            currentProduct.Cost = 50m;
+             var expected = 55m;
+
+            //Act
+            var actual = currentProduct.CalculateSuggestedPrice(10m);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 
 }

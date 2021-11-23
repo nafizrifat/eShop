@@ -23,7 +23,7 @@ namespace eShop.Common
         {
             // Code to send an email
 
-            var confirmation = "Message sent: " + subject;
+            var confirmation = "Message Sent: " + subject;
             LoggingService.LogAction(confirmation);
             return confirmation;
         }

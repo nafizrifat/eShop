@@ -46,6 +46,8 @@ namespace eShop.BLL
             set { availabilityDate = value; }
         }
 
+        public decimal Cost { get; set; }
+
         private string productName;
         public string ProductName
         {
@@ -107,6 +109,15 @@ namespace eShop.BLL
         public string ProductCode => this.Catagory +"-"+ SequenceNumber;
         public string ValidationMessage { get; private set; }
 
+        //public decimal CalculateSuggestedPrice(decimal markupPercent)
+        //{
+        //    return this.Cost + (this.Cost * markupPercent / 100);
+        //}
+
+
+        public decimal CalculateSuggestedPrice(decimal markupPercent)=>this.Cost + (this.Cost * markupPercent / 100);
+        
+
         public string SayHello()
         {
             //var vendor = new Vendor();
@@ -118,6 +129,11 @@ namespace eShop.BLL
             var result = LoggingService.LogAction("Saying Hello");
 
             return "Hello " + ProductName + " (" + ProductId + ") " + Description + " Available on: " + availabilityDate?.ToShortDateString();
+        }
+
+        public override string ToString()
+        {
+            return this.productName + "(" + this.productId + ")";
         }
     }
 }
