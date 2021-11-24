@@ -29,7 +29,7 @@ namespace eShop.BLLTests
             //Arrange
             var vendor = new Vendor();
             var product = new Product(1, "Milk", "");
-            var expected = new OperationResult(true, "Order from eShop\r\nProduct:Tools-1\r\nQuantity:10");
+            var expected = new OperationResult(true, "Order from eShop\r\nProduct:Tools-1\r\nQuantity:10\r\nInstructions:standard delivery");
 
             //Act
             var actual = vendor.PlaceOrder(product,10);
@@ -45,10 +45,27 @@ namespace eShop.BLLTests
             //Arrange
             var vendor = new Vendor();
             var product = new Product(1, "Milk", "");
-            var expected = new OperationResult(true, "Order from eShop\r\nProduct:Tools-1\r\nQuantity:10\r\nDeliver By:10/25/2022");
+            var expected = new OperationResult(true, "Order from eShop\r\nProduct:Tools-1\r\nQuantity:10\r\nDeliver By:10/25/2022\r\nInstructions:standard delivery");
 
             //Act
             var actual = vendor.PlaceOrder(product, 10, new DateTimeOffset(2022, 10,25,0,0,0 ,new TimeSpan(-6,0,0)));
+
+
+            //Assert
+            Assert.AreEqual(expected.Message, actual.Message);
+            Assert.AreEqual(expected.Success, actual.Success);
+        }
+
+        [TestMethod]
+        public void PlaceOrder_NoDeliveryDate()
+        {
+            //Arrange
+            var vendor = new Vendor();
+            var product = new Product(1, "Milk", "");
+            var expected = new OperationResult(true, "Order from eShop\r\nProduct:Tools-1\r\nQuantity:10\r\nInstructions:Express delivery");
+
+            //Act
+            var actual = vendor.PlaceOrder(product, 10, instructions:"Express delivery");
 
 
             //Assert

@@ -22,28 +22,7 @@ namespace eShop.BLL
         public string CompanyName { get; set; }
         public string Email { get; set; }
 
-        /// <summary>
-        /// Sends a product order to vendor
-        /// </summary>
-        /// <param name="product"></param>
-        /// <param name="quality"></param>
-        /// <returns></returns>
-        public OperationResult PlaceOrder(Product product, int quality)
-        {
-            return PlaceOrder(product, quality, null, null);
-        }
 
-        /// <summary>
-        /// Sends a product order to vendor
-        /// </summary>
-        /// <param name="product"></param>
-        /// <param name="quality"></param>
-        /// <param name="deliveryBy"></param>
-        /// <returns></returns>
-        public OperationResult PlaceOrder(Product product, int quality, DateTimeOffset? deliveryBy)
-        {
-            return PlaceOrder(product, quality, deliveryBy, null);
-        }
 
         /// <summary>
         /// Sends a product order to vendor
@@ -53,7 +32,7 @@ namespace eShop.BLL
         /// <param name="deliveryBy"></param>
         /// <param name="instructions"></param>
         /// <returns></returns>
-        public OperationResult PlaceOrder(Product product, int quality, DateTimeOffset? deliveryBy, String instructions)
+        public OperationResult PlaceOrder(Product product, int quality, DateTimeOffset? deliveryBy=null, String instructions="standard delivery")
         {
             if (product == null)
                 throw new ArgumentNullException(nameof(product));
