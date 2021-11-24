@@ -9,7 +9,7 @@ namespace eShop.BLLTests
     public class VendorTests
     {
         [TestMethod]
-        public void SendWelcomeEmail_NullCompany_Success()
+        public void  SendWelcomeEmail_NullCompany_Success()
         {
             //Arrange
             var vendor = new Vendor();
@@ -57,16 +57,31 @@ namespace eShop.BLLTests
         }
 
         [TestMethod]
+        public void PlaceOrderTest_WithAddress()
+        {
+            //Arrange
+            var vendor = new Vendor();
+            var product = new Product(1, "Milk","");
+            var expected = new OperationResult(true, "Test With Address");
+           //Act
+            var actual = vendor.PlaceOrder(product,12,includeAddress:true,sendCopy:false);
+
+            //Assert
+           Assert.AreEqual(expected.Success,actual.Success);
+           Assert.AreEqual(expected.Message,actual.Message);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Product_NullProduct_Exception()
         {
             //Arrange
             var vendor = new Vendor();
-           //Act
+            //Act
             var actual = vendor.PlaceOrder(null, 10);
 
             //Assert
-           //Expected Exception
+            //Expected Exception
         }
     }
 }

@@ -82,7 +82,7 @@ namespace eShop.BLL
         /// Sends an email to welcome a new vendor.
         /// </summary>
         /// <returns></returns>
-        public string SendWelcomeEmail(string message)
+        public string SendWelcomeEmail(string message) 
         {
             var emailService = new EmailService();
             var subject = ("Hello " + this.CompanyName).Trim();
@@ -90,6 +90,24 @@ namespace eShop.BLL
                                                         message,
                                                         this.Email);
             return confirmation;
+        }
+
+        /// <summary>
+        /// Placing the order 
+        /// </summary>
+        /// <param name="product">Product to order</param>
+        /// <param name="quality">Quantity of the product to order</param>
+        /// <param name="includeAddress">TRUE when shipping address included</param>
+        /// <param name="sendCopy">TRUE when send copy of email</param>
+        /// <returns>Success Flag and order text</returns>
+        public OperationResult PlaceOrder(Product product, int quality, bool includeAddress, bool sendCopy)
+        {
+            var orderText = "Test";
+            if (includeAddress) orderText += " With Address";
+            if (sendCopy) orderText += "With Copy";
+
+            var operationResult = new OperationResult(true, orderText);
+            return operationResult;
         }
     }
 }
