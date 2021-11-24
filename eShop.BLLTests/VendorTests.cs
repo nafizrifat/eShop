@@ -64,7 +64,7 @@ namespace eShop.BLLTests
             var product = new Product(1, "Milk","");
             var expected = new OperationResult(true, "Test With Address");
            //Act
-            var actual = vendor.PlaceOrder(product,12,includeAddress:true,sendCopy:false);
+            var actual = vendor.PlaceOrder(product,12,Vendor.IncludeAddress.Yes,Vendor.SendCopy.No);
 
             //Assert
            Assert.AreEqual(expected.Success,actual.Success);

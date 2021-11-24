@@ -8,6 +8,16 @@ namespace eShop.BLL
     /// </summary>
     public class Vendor
     {
+        public enum IncludeAddress
+        {
+            Yes,
+            No
+        };
+
+        public enum SendCopy
+        {
+            Yes,No
+        };
         public int VendorId { get; set; }
         public string CompanyName { get; set; }
         public string Email { get; set; }
@@ -100,11 +110,11 @@ namespace eShop.BLL
         /// <param name="includeAddress">TRUE when shipping address included</param>
         /// <param name="sendCopy">TRUE when send copy of email</param>
         /// <returns>Success Flag and order text</returns>
-        public OperationResult PlaceOrder(Product product, int quality, bool includeAddress, bool sendCopy)
+        public OperationResult PlaceOrder(Product product, int quality, IncludeAddress includeAddress, SendCopy sendCopy)
         {
             var orderText = "Test";
-            if (includeAddress) orderText += " With Address";
-            if (sendCopy) orderText += "With Copy";
+            if (includeAddress == IncludeAddress.Yes) orderText += " With Address";
+            if (sendCopy == SendCopy.Yes) orderText += "With Copy";
 
             var operationResult = new OperationResult(true, orderText);
             return operationResult;
