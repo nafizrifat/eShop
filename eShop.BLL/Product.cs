@@ -106,7 +106,9 @@ namespace eShop.BLL
 
         internal string Catagory { get;  set; }
         public int SequenceNumber { get; set; } = 1;
-        public string ProductCode => this.Catagory +"-"+ SequenceNumber;
+        //public string ProductCode => this.Catagory +"-"+ SequenceNumber;
+        //public string ProductCode => string.Format("{0}-{1}", Catagory, SequenceNumber);
+        public string ProductCode => $"{Catagory}-{SequenceNumber}";
         public string ValidationMessage { get; private set; }
 
         //public decimal CalculateSuggestedPrice(decimal markupPercent)

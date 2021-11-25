@@ -65,7 +65,7 @@ namespace eShop.BLLTests
             var expected = new OperationResult(true, "Order from eShop\r\nProduct:Tools-1\r\nQuantity:10\r\nInstructions:Express delivery");
 
             //Act
-            var actual = vendor.PlaceOrder(product, 10, instructions:"Express delivery");
+            var actual = vendor.PlaceOrder(product, 10, instructions: "Express delivery");
 
 
             //Assert
@@ -99,6 +99,35 @@ namespace eShop.BLLTests
 
             //Assert
             //Expected Exception
+        }
+
+        [TestMethod]
+        public void ToStringTest()
+        {
+            //Arrange
+            var vendor = new Vendor();
+            vendor.VendorId=1;
+            vendor.CompanyName = "XYZ Corp";
+            var expected = "Vendor: XYZ Corp";
+            //Act
+            var actual = vendor.ToString();
+
+            //Assert
+            Assert.AreEqual(expected,actual);
+        }
+
+        [TestMethod]
+        public void PrepareDirectionsTest()
+        {
+            //Arrange
+            var vendor = new Vendor();
+            
+            var expected = "Insert \r\n to define a new line";
+            //Act
+            var actual = vendor.PrepareDirections();
+            Console.WriteLine(actual);
+            //Assert
+            Assert.AreEqual(expected, actual);
         }
     }
 }
