@@ -4,7 +4,7 @@ using System;
 namespace eShop.BLL
 {
     /// <summary>
-    /// Manages the vendors from whom we purchase our inventory.
+    /// Manages the VENDORS from whom we purchase our inventory.
     /// </summary>
     public class Vendor
     {
